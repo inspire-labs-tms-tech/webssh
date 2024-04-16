@@ -27,8 +27,26 @@ jobs:
       - run: pip install pytest pytest-cov -r requirements.txt
       - run: pytest --cov=webssh
 
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - run: pip install pyinstaller -r requirements.txt
+
+      - run: ./build.sh
+
   dockerize:
-    needs: pytest
+    needs:
+      - pytest
+      - build
     runs-on: ubuntu-latest
     permissions:
       contents: read
