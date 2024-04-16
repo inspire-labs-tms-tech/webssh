@@ -805,7 +805,7 @@ jQuery(function($){
     try {
       args = JSON.parse(event.data);
     } catch (SyntaxError) {
-      args = event.data.split('|');
+      args = event.data && event.data.split ? event.data.split('|') : [];
     }
 
     if (!Array.isArray(args)) {
