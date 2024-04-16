@@ -577,7 +577,7 @@ class TestAppInDebugMode(OtherTestBase):
 
     def test_html(self):
         response = self.fetch('/', method='GET')
-        self.assertIn(b'novalidate>', response.body)
+        self.assertIn(b'<div class="container">', response.body)
 
 
 class TestAppWithLargeBuffer(OtherTestBase):
