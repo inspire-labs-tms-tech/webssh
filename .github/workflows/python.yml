@@ -39,9 +39,11 @@ jobs:
         with:
           python-version: 3.11
 
-      - run: pip install pyinstaller -r requirements.txt
-
-      - run: ./build.sh
+      - name: build
+        run: |
+          pip install pyinstaller -r requirements.txt
+          ./build.sh
+          ./dist/run --help
 
   dockerize:
     needs:
