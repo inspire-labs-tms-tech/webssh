@@ -519,6 +519,7 @@ jQuery(function ($) {
 
         sock.onopen = function () {
             wssh.isConnected = true;
+            window.parent.postMessage("WSSH:CONNECTED");
             term.open(terminal);
             toggle_fullscreen(term);
             update_font_family(term);
@@ -542,6 +543,7 @@ jQuery(function ($) {
 
         sock.onclose = function (e) {
             wssh.isConnected = false;
+            window.parent.postMessage("WSSH:DISCONNECTED");
             term.dispose();
             term = undefined;
             sock = undefined;
