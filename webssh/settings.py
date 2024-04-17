@@ -156,12 +156,7 @@ def get_trusted_downstream(tdstream):
 
 def get_origin_setting(options):
     if options.origin == '*':
-        if not options.debug:
-            raise ValueError(
-                'Wildcard origin policy is only allowed in debug mode.'
-            )
-        else:
-            return '*'
+        return '*'
 
     origin = options.origin.lower()
     if origin in ['same', 'primary']:
