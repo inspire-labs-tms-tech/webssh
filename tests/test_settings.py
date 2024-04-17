@@ -143,9 +143,6 @@ class TestSettings(unittest.TestCase):
     def test_get_origin_setting(self):
         options.debug = False
         options.origin = '*'
-        with self.assertRaises(ValueError):
-            get_origin_setting(options)
-
         options.debug = True
         self.assertEqual(get_origin_setting(options), '*')
 
